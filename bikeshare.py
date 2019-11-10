@@ -133,35 +133,35 @@ def trip_duration_stats(df):
     start_time = time.time()
 
     # Display total travel time
-    print('Total Duration: ', df['Trip Duration'].sum())
+    print('Total Duration: ', df['Trip Duration'].sum(),'seconds')
     # Display mean travel time
-    print('Avg Duration: ', df['Trip Duration'].sum() / df['Trip Duration'].count())
+    print('Avg Duration: ', df['Trip Duration'].sum() / df['Trip Duration'].count(),'seconds')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-' * 40)
 
 
+def user_stats(df):
+    """Displays statistics on bikeshare users."""
 
+    print('\nCalculating User Stats...\n')
+    start_time = time.time()
 
+    # Display counts of user types
+    print(df['User Type'].value_counts())
 
+    # Display counts of gender
+    if 'Gender' in df.columns:
+        print(df['Gender'].value_counts())
 
+    if 'Birth Year' in df.columns:
+        # Display earliest, most recent, and most common year of birth
+        print('Earliest year for our users:', df['Birth Year'].min())
+        print('Recent year for our users:', df['Birth Year'].max())
+        print('Most common year for our users:', df['Birth Year'].mode()[0])
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    print("\nThis took %s seconds." % (time.time() - start_time))
+    print('-' * 40)
 
 
 def main():
